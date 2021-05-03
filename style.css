@@ -1,0 +1,88 @@
+.formPopup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+.formContainer {
+  max-width: 500px;
+  padding: 10px;
+  background-color: white;
+}
+
+.formContainer input[type="text"],
+.formContainer input[type="number"] {
+  width: 94%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.formContainer .btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.formContainer input[type="text"]:focus,
+.formContainer input[type="number"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.formContainer .cancel {
+  background-color: red;
+}
+
+.openButton {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  top: 23px;
+  left: 28px;
+  width: 280px;
+}
+
+.library {
+  display: flex;
+  grid-template-columns: auto;
+  position: fixed;
+  top: 100px;
+  left: 28px;
+}
+
+.formContainer .btn:hover,
+.openButton:hover {
+  opacity: 1;
+}
+
+.book {
+  color: white;
+  padding: 5px;
+  text-align: center;
+  width: 160px;
+  height: 200px;
+  margin: 10px;
+}
+
+.deleteButton {
+  width: auto;
+  float: right;
+  position: relative;
+  border: 1px solid #aaa;
+  font-size: smaller;
+  color: #aaa;
+}
