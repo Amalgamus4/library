@@ -2,13 +2,18 @@ class Book {
   constructor(title, author, pages, haveRead) {
     this.title = title;
     this.author = author;
-    this.pages = pages;
-    //    this.color = randomBookColor();
+    this.pages = pages + " pages";
+    Object.defineProperty(this, "color", {
+      value: randomBookColor(),
+      writeable: true,
+      enumerable: false,
+      configurable: true,
+    });
     if (haveRead == true) {
       this.haveRead = "Read";
     }
     if (haveRead == false) {
-      this.haveRead = "Not read yet";
+      this.haveRead = "Not read";
     }
   }
   info() {
@@ -16,7 +21,7 @@ class Book {
   }
   toggleHasRead(hasRead) {
     this.haveRead === "Read"
-      ? (this.haveRead = "Not yet read")
+      ? (this.haveRead = "Not read")
       : (this.haveRead = "Read");
     displayLibrary();
   }
@@ -67,6 +72,7 @@ function displayLibrary() {
         .getElementById(thisBook)
         .appendChild(createBookElement(myLibrary[i][property]));
     }
+    newBook.style.backgroundColor = myLibrary[i].color;
     addDeleteButton(thisBook);
     addReadButton(thisBook);
   }
@@ -75,11 +81,10 @@ function displayLibrary() {
 function setBookAttributes(newBook, thisBook) {
   newBook.setAttribute("id", thisBook);
   newBook.setAttribute("class", "book");
-  newBook.style.backgroundColor = randomBookColor();
 }
 
 function addDeleteButton(thisBook) {
-  let deleteButton = document.createElement("div");
+  let deleteButton = document.createElement("button");
   document.getElementById(thisBook).appendChild(deleteButton);
   deleteButton.setAttribute("class", "deleteButton");
   deleteButton.textContent = "X";
@@ -95,10 +100,11 @@ function removeBookFromLibrary(thisBook) {
 }
 
 function addReadButton(thisBook) {
-  let readButton = document.createElement("div");
+  let readButton = document.createElement("button");
   document.getElementById(thisBook).appendChild(readButton);
   let index = thisBook.substring(4);
   readButton.textContent = "Read?";
+  readButton.setAttribute("class", "readButton");
   readButton.addEventListener("click", () =>
     myLibrary[index].toggleHasRead(readButton)
   );

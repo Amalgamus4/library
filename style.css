@@ -80,9 +80,14 @@
 
 .deleteButton {
   width: auto;
-  float: right;
   position: relative;
   border: 1px solid #aaa;
   font-size: smaller;
   color: #aaa;
+}
+
+.readButton {
+  margin: 5px;
+  width: auto;
+  border: none;
 }
